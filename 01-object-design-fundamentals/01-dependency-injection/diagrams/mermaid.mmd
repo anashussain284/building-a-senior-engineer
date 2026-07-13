@@ -1,0 +1,31 @@
+classDiagram
+    class Client {
+        - DependencyInterface $dependency
+        + __construct(DependencyInterface $dependency)
+        + doSomething()
+    }
+
+    class DependencyInterface {
+        <<interface>>
+        + execute()
+    }
+
+    class ConcreteDependencyA {
+        + execute()
+    }
+
+    class ConcreteDependencyB {
+        + execute()
+    }
+
+    class Container {
+        + make(className)
+        + bind(interface, concrete)
+    }
+
+    Client --> DependencyInterface : Uses
+    ConcreteDependencyA ..|> DependencyInterface : Implements
+    ConcreteDependencyB ..|> DependencyInterface : Implements
+    Container ..> Client : Injects
+    Container ..> ConcreteDependencyA : Resolves
+    Container ..> ConcreteDependencyB : Resolves
