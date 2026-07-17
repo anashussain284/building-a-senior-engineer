@@ -1,0 +1,16 @@
+{
+    "name": "root/01-payment-processor",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anas Hussain"
+        }
+    ],
+    "require": {}
+}

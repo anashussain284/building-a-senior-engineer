@@ -1,0 +1,41 @@
+classDiagram
+    class Container {
+        -bindings: array
+        -instances: array
+        +bind(abstract, concrete)
+        +singleton(abstract, concrete)
+        +make(abstract)
+        +resolve(abstract)
+    }
+    
+    class ServiceProvider {
+        +register()
+        +boot()
+    }
+    
+    class Client {
+        -DependencyInterface $dependency
+        +__construct(DependencyInterface $dependency)
+        +execute()
+    }
+    
+    class DependencyInterface {
+        <<interface>>
+        +doSomething()
+    }
+    
+    class ConcreteDependency {
+        +doSomething()
+    }
+    
+    class Application {
+        -Container $container
+        +getContainer()
+    }
+    
+    Container <|-- Application : contains
+    ServiceProvider --> Application : registers with
+    Container --> Client : injects
+    Client --> DependencyInterface : depends on
+    ConcreteDependency ..|> DependencyInterface : implements
+    Container --> ConcreteDependency : resolves
