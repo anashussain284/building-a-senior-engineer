@@ -1,0 +1,57 @@
+classDiagram
+    class User {
+        -NotificationService $notifier
+        -AuthenticationService $auth
+        -BillingService $billing
+        +__construct(NotificationService, AuthenticationService, BillingService)
+        +sendNotification(message)
+        +login(credentials)
+        +pay(amount)
+    }
+    
+    class NotificationService {
+        +send(recipient, message)
+    }
+    
+    class AuthenticationService {
+        +authenticate(credentials)
+        +logout()
+    }
+    
+    class BillingService {
+        +charge(amount)
+        +refund(amount)
+    }
+    
+    class EmailNotifier {
+        +send(recipient, message)
+    }
+    
+    class SmsNotifier {
+        +send(recipient, message)
+    }
+    
+    class JwtAuthenticator {
+        +authenticate(credentials)
+        +logout()
+    }
+    
+    class SessionAuthenticator {
+        +authenticate(credentials)
+        +logout()
+    }
+    
+    class StripeBilling {
+        +charge(amount)
+        +refund(amount)
+    }
+    
+    User --> NotificationService : delegates
+    User --> AuthenticationService : delegates
+    User --> BillingService : delegates
+    
+    NotificationService <|-- EmailNotifier : implements
+    NotificationService <|-- SmsNotifier : implements
+    AuthenticationService <|-- JwtAuthenticator : implements
+    AuthenticationService <|-- SessionAuthenticator : implements
+    BillingService <|-- StripeBilling : implements
