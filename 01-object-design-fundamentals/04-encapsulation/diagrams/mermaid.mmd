@@ -1,0 +1,47 @@
+classDiagram
+    class Order {
+        -string $status
+        -float $total
+        -string $currency
+        -int $userId
+        -array $items
+        -?string $shippingAddress
+        -?string $billingAddress
+        -string $paymentMethod
+        -?string $paymentIntentId
+        -array $timestamps
+        +__construct(array $data)
+        +markAsPaid(): void
+        +cancel(): void
+        +ship(): void
+        +addItem(item): void
+        +getTotal(): float
+        +getStatus(): string
+        +isPending(): bool
+        +isPaid(): bool
+        +isCancelled(): bool
+        +canBeCancelled(): bool
+        +canBeShipped(): bool
+        +getPaymentIntentId(): ?string
+    }
+    
+    class PaymentProcessor {
+        +processPayment(Order $order): void
+        +refund(Order $order): void
+    }
+    
+    class OrderRepository {
+        +save(Order $order): void
+        +find(id): Order
+    }
+    
+    class OrderController {
+        +store(Request $request)
+        +cancel(Request $request, Order $order)
+        +ship(Request $request, Order $order)
+    }
+    
+    OrderController --> OrderRepository : uses
+    OrderController --> PaymentProcessor : uses
+    PaymentProcessor --> Order : uses
+    OrderRepository --> Order : persists
