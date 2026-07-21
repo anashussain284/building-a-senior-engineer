@@ -6,7 +6,7 @@ namespace App\Models;
 final readonly class PaymentResult
 {
 	public function __construct(
-		public bool $successful,
+		public bool $isSuccessful,
 		public string $transactionId,
 		public string $message
 	) { }

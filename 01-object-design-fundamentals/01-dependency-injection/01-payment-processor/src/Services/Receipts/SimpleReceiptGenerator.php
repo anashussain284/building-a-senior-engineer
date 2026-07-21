@@ -7,10 +7,20 @@ use App\Contracts\ReceiptGenerator;
 use App\Models\Payment;
 use App\Models\PaymentResult;
 
-final class class SimpleReceiptGenerator implements ReceiptGenerator
+final class SimpleReceiptGenerator implements ReceiptGenerator
 {
 	public function generate(Payment $payment, PaymentResult $result): string
 	{
-
+        return <<<TEXT
+--------------------------------
+PAYMENT RECEIPT
+--------------------------------
+Customer : {$payment->customerName}
+Amount   : {$payment->amountInPaise}
+Currency : {$payment->currency}
+Txn ID   : {$result->transactionId}
+Status   : {$result->message}
+--------------------------------
+TEXT;
 	}
 }

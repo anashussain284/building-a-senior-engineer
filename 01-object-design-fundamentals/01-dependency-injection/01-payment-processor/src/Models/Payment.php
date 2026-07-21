@@ -7,7 +7,7 @@ final readonly class Payment
 {
 	public function __construct(
 		public string $customerName,
-		public float $amount,
+		public int $amountInPaise,
 		public string $currency
 	) { }
 }
