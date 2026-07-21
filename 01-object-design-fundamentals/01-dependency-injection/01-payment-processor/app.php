@@ -13,10 +13,13 @@ use App\Services\Logging\ConsoleLogger;
 use App\Services\Receipts\SimpleReceiptGenerator;
 use App\Services\PaymentProcessor;
 use App\Services\Notifications\SlackNotifier;
+use App\Services\Formatters\MoneyCurrencyFormatter;
+use App\Services\Generators\StandardTransactionReferenceGenerator;
+use App\Services\Logging\FileAuditLogger;
 
 $payment1 = new Payment(
 	customerName: "Anas Hussain",
-	amountInPaise: 1000,
+	amountInPaise: 10000,
 	currency: "INR"
 );
 
@@ -24,7 +27,16 @@ $razorpayGateway = new RazorpayGateway();
 $payPalGateway = new PayPalGateway();
 $stripeGateway = new StripeGateway();
 $consoleLogger = new ConsoleLogger();
-$simpleReceiptGenerator = new SimpleReceiptGenerator();
+
+$moneyCurrencyFormatter = new MoneyCurrencyFormatter();
+$standardTransactionReferenceGenerator = new StandardTransactionReferenceGenerator();
+$fileAuditLogger = new FileAuditLogger();
+
+$simpleReceiptGenerator = new SimpleReceiptGenerator(
+	currencyFormatter: $moneyCurrencyFormatter,
+	referenceGenerator: $standardTransactionReferenceGenerator,
+	auditLogger: $fileAuditLogger
+);
 $emailNotifier = new EmailNotifier();
 $smsNotifier = new SmsNotifier();
 $slackNotifier = new SlackNotifier();
