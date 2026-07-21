@@ -1,0 +1,27 @@
+src/
+├── Contracts/ ✅
+│   ├── Logger.php ✅
+│   ├── MessageFormatter.php ✅
+│   └── NotificationChannel.php ✅
+│
+├── Models/ ✅
+│   ├── Notification.php ✅
+│   └── NotificationResult.php ✅
+│
+├── Services/
+│   ├── Channels/
+│   │   ├── EmailChannel.php ✅
+│   │   ├── SmsChannel.php ✅
+│   │   └── SlackChannel.php
+│   │
+│   ├── Formatting/
+│   │   ├── PlainTextFormatter.php ✅
+│   │   └── UppercaseFormatter.php
+│   │
+│   ├── Logging/
+│   │   ├── ConsoleLogger.php ✅
+│   │   └── FileLogger.php
+│   │
+│   └── NotificationManager.php ✅
+│
+app.php
