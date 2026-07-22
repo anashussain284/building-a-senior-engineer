@@ -14,7 +14,6 @@ final class PhpSerializer implements Serializer
 
 	public function unserialize(string $value): mixed
 	{
-		return unserialize($value);
+		return unserialize($value, ['allowed_classes' => false]);
 	}
-
 }

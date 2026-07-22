@@ -6,9 +6,10 @@ namespace App\Services;
 use App\Models\CacheResult;
 use App\Contracts\CacheStore;
 use App\Contracts\Logger;
+use App\Contracts\CacheInterface;
 use App\Contracts\Serializer;
 
-final class CacheManager
+final class CacheManager implements CacheInterface
 {
 	public function __construct(
 		private CacheStore $cacheStore,

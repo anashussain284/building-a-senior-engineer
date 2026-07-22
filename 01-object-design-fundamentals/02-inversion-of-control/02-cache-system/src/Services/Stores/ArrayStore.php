@@ -7,7 +7,7 @@ use App\Contracts\CacheStore;
 
 final class ArrayStore implements CacheStore
 {
-	private $items = [];
+	private array $items = [];
 
 	public function put(string $key, string $value): void
 	{

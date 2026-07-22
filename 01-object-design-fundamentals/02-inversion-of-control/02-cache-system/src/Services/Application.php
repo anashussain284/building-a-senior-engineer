@@ -7,9 +7,7 @@ use App\Services\CacheManager;
 
 final class Application
 {
-	public function __construct(
-		private readonly CacheManager $cache
-	) {}
+	public function __construct(private readonly CacheManager $cache) {}
 
 	public function run(): void
 	{

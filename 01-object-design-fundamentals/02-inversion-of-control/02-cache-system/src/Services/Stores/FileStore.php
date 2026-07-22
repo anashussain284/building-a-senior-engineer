@@ -5,9 +5,9 @@ namespace App\Services\Stores;
 
 use App\Contracts\CacheStore;
 
-file class FileStore implements CacheStore
+final class FileStore implements CacheStore
 {
-	public function __construct(readonly private string $directory='Cache') { }
+	public function __construct(private readonly string $directory='Cache') {}
 
 	public function put(string $key, string $value): void
 	{
@@ -22,7 +22,8 @@ file class FileStore implements CacheStore
 			return null;
 		}
 
-		return file_get_contents($filePath);
+		$content = file_get_contents($filePath);
+		return $content !== false ? $content : null;
 	}
 
 	private function path(string $key): string
