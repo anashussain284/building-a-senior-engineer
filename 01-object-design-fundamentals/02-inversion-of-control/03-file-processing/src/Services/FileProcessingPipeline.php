@@ -4,32 +4,32 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\FileLoader;
-use App\Contracts\FileProcessor;
 use App\Contracts\FileWriter;
 use App\Contracts\Logger;
-
-use App\Models\FileData;
 use App\Models\ProcessResult;
 
 final readonly class FileProcessingPipeline
 {
 	public function __construct(
 		private readonly FileLoader $fileLoader,
-		private readonly FileProcessor $fileProcessor,
+		private readonly array $processors,
 		private readonly FileWriter $fileWriter,
 		private readonly Logger $logger
 	) { }
 
 	public function execute(string $path): ProcessResult
 	{
-		$this->logger->info("Loading file...");
+		$this->logger->info("Loading file from {$path}...");
 		$file = $this->fileLoader->load($path);
 
-		$this->logger->info("Processing file...");
-		$processedFile = $this->fileProcessor->process($file);
+		foreach ($this->processors as $processor) {
+			$this->logger->info("Executing processor: " . $processor::class);
+			$processedFile = $processor->process($file);
+			$this->logger->info("Writing file output...");
+			$this->fileWriter->write($processedFile);
+			$this->logger->info("===================");
+		}
 
-		$this->logger->info("Writing file...");
-		$this->fileWriter->write($processedFile);
 
 		return new ProcessResult(
 			isSuccess: true,

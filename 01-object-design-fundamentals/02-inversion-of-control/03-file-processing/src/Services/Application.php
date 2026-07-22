@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Services\FileProcessingPipeline;
+use App\Models\ProcessResult;
 
 final readonly class Application
 {
@@ -11,8 +12,8 @@ final readonly class Application
 		private readonly FileProcessingPipeline $pipeline
 	) { }
 
-	public function run()
+	public function run(string $path = 'example.txt'): ProcessResult
 	{
-		$this->pipeline->execute('example.txt');
+		return $this->pipeline->execute($path);
 	}
 }
