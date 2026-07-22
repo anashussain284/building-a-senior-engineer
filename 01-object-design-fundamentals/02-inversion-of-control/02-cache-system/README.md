@@ -1,0 +1,27 @@
+src/
+├── Contracts/ ✅
+│   ├── CacheStore.php ✅
+│   ├── Logger.php ✅
+│   └── Serializer.php ✅
+│
+├── Models/ ✅
+│   ├── CacheItem.php ✅
+│   └── CacheResult.php ✅
+│
+├── Services/
+│   ├── Stores/ ✅
+│   │   ├── ArrayStore.php ✅
+│   │   └── FileStore.php ✅
+│   │
+│   ├── Serialization/ ✅
+│   │   ├── JsonSerializer.php ✅
+│   │   └── PhpSerializer.php ✅
+│   │
+│   ├── Logging/
+│   │   ├── ConsoleLogger.php ✅
+│   │   └── FileLogger.php 
+│   │
+│   ├── CacheManager.php ✅
+│   └── Application.php ✅
+│
+app.php ✅
