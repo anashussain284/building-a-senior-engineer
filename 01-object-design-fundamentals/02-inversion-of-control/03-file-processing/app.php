@@ -19,7 +19,7 @@ $consoleLogger = new ConsoleLogger();
 
 $fileProcessingPipeline = new FileProcessingPipeline(
 	fileLoader: $localFileLoader,
-	fileProcessor: $lineCounterProcessor,
+	processors: [$lineCounterProcessor, $uppercaseProcessor],
 	fileWriter: $consoleWriter,
 	logger: $consoleLogger
 );
