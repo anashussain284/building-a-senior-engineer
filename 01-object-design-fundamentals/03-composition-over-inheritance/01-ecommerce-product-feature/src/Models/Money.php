@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-/**
- * 
- */
 final readonly class Money
 {
 	public function __construct(
