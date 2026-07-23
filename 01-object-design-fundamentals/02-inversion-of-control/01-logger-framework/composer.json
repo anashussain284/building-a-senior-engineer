@@ -1,8 +1,7 @@
 {
-    "name": "root/01-logger-framework",
-    "description": "Logger framework",
+    "name": "02-inversion-of-control/01-logger-framework",
+    "description": "Inversion Of Control demonstrating logger framework",
     "type": "project",
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -10,8 +9,12 @@
     },
     "authors": [
         {
-            "name": "Anas Hussain"
+            "name": "Anas Hussain M",
+            "email": "anashussain284@gmail.com"
         }
     ],
-    "require": {}
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    }
 }
