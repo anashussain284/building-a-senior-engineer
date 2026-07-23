@@ -1,7 +1,7 @@
 {
-    "name": "root/01-payment-processor",
+    "name": "01-dependency-injection/01-payment-processor",
+    "description": "Dependency Injection demonstrating payment processor",
     "type": "project",
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -9,8 +9,12 @@
     },
     "authors": [
         {
-            "name": "Anas Hussain"
+            "name": "Anas Hussain M",
+            "email": "anashussain284@gmail.com"
         }
     ],
-    "require": {}
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    }
 }
