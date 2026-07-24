@@ -1,0 +1,20 @@
+{
+    "name": "03-composition-over-inheritance/02-vehicle-feature",
+    "description": "Composition Over Inheritance demonstrating vehicle feature system",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anas Hussain M",
+            "email": "anashussain284@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    }
+}
